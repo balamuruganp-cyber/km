@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-52PFF85D');</script>
-<!-- End Google Tag Manager -->
-
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kalyan Musings — The Official Kalyan Matrimony Blog</title>
@@ -270,6 +260,40 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .post-view .rel-grid{grid-template-columns:1fr}
     .post-view .takeaway{padding:32px 26px}
   }
+
+  /* ================= COMMENTS (added to the end of every article) ================= */
+  .post-view .comments{max-width:820px;margin:44px auto 0;padding:40px 52px 36px;background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:24px}
+  .post-view .comments h2{font-family:var(--serif);font-weight:500;font-size:clamp(24px,3vw,30px);line-height:1.2;display:flex;align-items:baseline;gap:12px}
+  .post-view .comments h2 .count{font-family:var(--sans);font-size:14px;font-weight:500;color:var(--muted)}
+  .post-view .comments .c-intro{color:var(--muted);font-weight:300;font-size:15px;margin:8px 0 24px}
+  .post-view .c-form{display:grid;gap:12px;padding:22px;background:var(--paper);border:1px solid var(--line);border-radius:18px}
+  .post-view .c-form label{font-size:13px;font-weight:600;color:var(--ink);display:grid;gap:6px}
+  .post-view .c-form input,.post-view .c-form textarea{width:100%;font-family:var(--sans);font-size:15px;color:var(--ink);background:#fffaf3;border:1px solid rgba(26,20,16,.16);border-radius:12px;padding:12px 14px;transition:border-color .2s,box-shadow .2s}
+  .post-view .c-form textarea{min-height:120px;resize:vertical;line-height:1.6}
+  .post-view .c-form input:focus,.post-view .c-form textarea:focus{outline:none;border-color:var(--rose);box-shadow:0 0 0 3px var(--rose-soft)}
+  .post-view .c-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .post-view .c-left{font-size:12.5px;color:var(--muted)}
+  .post-view .c-left.warn{color:var(--rose-deep)}
+  .post-view .c-form button{background:var(--rose);color:#fff;border:0;padding:12px 26px;border-radius:30px;font-family:var(--sans);font-weight:600;font-size:14px;cursor:pointer;transition:background .25s}
+  .post-view .c-form button:hover{background:var(--rose-deep)}
+  .post-view .c-form button:disabled{opacity:.5;cursor:not-allowed}
+  .post-view .c-msg{font-size:13.5px;color:#2f7a4b;min-height:0}
+  .post-view .c-list{list-style:none;margin-top:26px;display:grid;gap:14px}
+  .post-view .c-item{display:grid;grid-template-columns:42px 1fr;gap:14px;padding:18px 0;border-top:1px solid var(--line)}
+  .post-view .c-item:first-child{border-top:0}
+  .post-view .c-item.new{animation:cIn .5s ease both}
+  @keyframes cIn{from{background:var(--rose-soft)}to{background:transparent}}
+  @media(prefers-reduced-motion:reduce){.post-view .c-item.new{animation:none}}
+  .post-view .c-av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#a97c33);color:#fff;display:grid;place-items:center;font-family:var(--serif);font-size:17px;font-weight:600}
+  .post-view .c-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .post-view .c-head b{font-size:15px;font-weight:600}
+  .post-view .c-head time{font-size:12.5px;color:var(--muted)}
+  .post-view .c-text{font-size:15.5px;font-weight:300;line-height:1.7;color:#3a302a;margin-top:4px;white-space:pre-wrap;overflow-wrap:anywhere}
+  .post-view .c-del{background:none;border:0;color:var(--muted);font:inherit;font-size:12.5px;cursor:pointer;margin-top:6px;padding:0;text-decoration:underline;text-underline-offset:2px}
+  .post-view .c-del:hover{color:var(--rose-deep)}
+  .post-view .c-empty{color:var(--muted);font-size:14.5px;font-weight:300;font-style:italic;margin-top:22px;text-align:center}
+  @media(max-width:760px){.post-view .comments{padding:30px 20px 26px}.post-view .c-form{padding:16px}}
+  .c-form textarea:focus-visible{outline:none}
 </style>
 </head>
 <body>
@@ -539,7 +563,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <p class="stand">How do you find a suitable life partner when the people you know are no longer limited to your own community?</p>
         <div class="a-meta">
           <span class="av">K</span><span>Team Kalyan</span>
-          <span class="dot"></span><span>11 min read</span>
+          <span class="dot"></span><span>4 min read</span>
           <span class="dot"></span><span>19 August 2026</span>
         </div>
       </div>
@@ -550,111 +574,121 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </figure>
 
       <div class="a-body">
-        <p class="lead">For centuries, the search for a life partner was deeply rooted in community. Families knew one another, village elders carried news from one household to another, and trusted astrologers or matchmakers helped connect suitable alliances. In many ways, finding a bride or groom was not just a family affair but a community effort. People lived close to one another, shared traditions, and often knew the history of every household in their town or village.</p>
+        <p class="lead">For centuries, matchmaking was deeply rooted in community. Families knew one another, village elders carried news between households, and trusted matchmakers helped connect suitable alliances.</p>
+        <p>But the world was changing.</p>
+        <p>By the late nineteenth and early twentieth centuries, railways, education, and new industries were encouraging people to move away from their hometowns. Families that had lived within the same communities for generations were becoming spread across cities and regions.</p>
+        <p>The old networks could no longer reach everyone.</p>
+        <p>A new way of finding a life partner was needed.</p>
 
-        <p>But by the late nineteenth century, the world was beginning to change. Railways connected distant cities, educational opportunities encouraged young people to move away from their hometowns, and new industries created jobs far beyond traditional communities. Families that had lived in the same place for generations suddenly found themselves scattered across regions. The trusted village networks that had once guided matrimonial decisions could no longer keep pace with an increasingly connected society.</p>
-        <p>For the first time in history, families faced a new challenge. <strong>How do you find a suitable life partner when the people you know are no longer limited to your own community?</strong></p>
-        <p>That question would change the future of matchmaking forever.</p>
-
-        <h2>When Matchmaking Found a Place in the Newspaper</h2>
+        <h2>When Matchmaking Found the Newspaper</h2>
+        <p>Newspapers were transforming how information travelled. News, jobs, business opportunities, and public announcements could now reach thousands of households.</p>
+        <p>Soon, another kind of announcement found its place on the printed page: <strong>the matrimonial advertisement.</strong></p>
 
         <figure class="inline">
           <img id="p3Fig1" src="" alt="A man reading the matrimonial alliances page of a newspaper while his family sits around him in a lamplit room">
-          <figcaption>The matrimonial pages of a Sunday newspaper, a century ago.</figcaption>
+          <figcaption>The matrimonial advertisement finds its place on the printed page.</figcaption>
         </figure>
 
-        <p>Imagine opening a newspaper a hundred years ago. The pages are filled with news, government announcements, business advertisements, and opportunities for employment. For many families, newspapers have become their connection to a rapidly changing world. Information that once travelled slowly through word of mouth could now reach thousands of people in a single day.</p>
-
-        <figure class="inline clip">
-          <img id="p3Clip1" src="" alt="A small newspaper classified advertisement for a matrimony service">
-        </figure>
-
-        <p>Somewhere along the way, a simple but revolutionary idea emerged. If newspapers could help people buy land, find jobs, and grow businesses, perhaps they could also help people find life partners.</p>
-
-        <figure class="inline clip">
-          <img id="p3Clip2" src="" alt="A newspaper matrimonial classifieds page with one advertisement circled in pen">
-        </figure>
-
-        <p>The concept was not unique to India. In Europe and North America, personal and matrimonial advertisements had already begun appearing in newspapers. Individuals who had moved away from their hometowns used these notices to introduce themselves and search for companionship or marriage. What seems ordinary today was extraordinary at the time. For the first time, people could look for a life partner beyond the boundaries of their immediate social circles.</p>
-
-        <figure class="inline clip">
-          <img id="p3Clip3" src="" alt="A newspaper matrimonial section listing brides wanted advertisements">
-          <figcaption>Printed matrimonial columns, still running well into the internet age.</figcaption>
-        </figure>
-
-        <p>As newspapers became more popular in India, matrimonial advertisements gradually found their place as well. A few carefully written lines describing a person's education, profession, family background, and expectations could suddenly connect families separated by hundreds of miles. The newspaper had become more than a source of information. It had become a matchmaker.</p>
-
-        <h2>The Sunday Morning Ritual</h2>
-
-        <figure class="inline">
-          <img id="p3Fig2" src="" alt="A family gathered around a table reading letters and photographs sent in reply to a matrimonial advertisement">
-          <figcaption>Letters, photographs and horoscopes travelled between cities in carefully addressed envelopes.</figcaption>
-        </figure>
-
-        <p>As matrimonial advertisements gained popularity, newspapers began dedicating entire sections to them. What started as occasional notices soon evolved into organized matrimonial columns that became some of the most widely read sections of weekend newspapers.</p>
-        <p>For many families, Sunday mornings developed a familiar rhythm. The newspaper would arrive at the doorstep, and parents would carefully turn to the matrimonial pages. Advertisements were marked, discussed, and compared. Promising profiles were circled. Letters were drafted and mailed. Photographs and horoscopes travelled between cities in carefully addressed envelopes. Days or weeks later, replies would arrive, carrying the possibility of a new alliance.</p>
-        <p>The process was slower than what we know today, but it represented a remarkable shift. Families were no longer limited by geography. A household in Chennai could connect with a family in Coimbatore. A proposal from Delhi could reach a family in Kolkata. The search for a suitable partner had expanded far beyond local communities.</p>
-
-        <div class="pull">
-          <p>In many ways, these newspaper columns became the first large-scale matrimonial networks, connecting people across cities and regions long before the internet existed.</p>
-        </div>
-
-        <h2>While India Had Matrimonial Columns, The West Had "Lonely Hearts"</h2>
+        <p>The idea was not limited to India. In Europe and North America, personal and matrimonial advertisements allowed individuals to introduce themselves and seek companionship or marriage beyond their immediate social circles.</p>
 
         <figure class="inline">
           <img id="p3Fig3" src="" alt="A woman reading a newspaper personals column and a man writing a reply by lamplight in two city apartments">
-          <figcaption>Personal columns in London and New York, answered by letter.</figcaption>
+          <figcaption>In Europe and North America, personal advertisements reached beyond familiar social circles.</figcaption>
         </figure>
 
-        <p>Across Europe and North America, matchmaking evolved in a slightly different direction. Newspapers introduced personal advertisements and what later became known as "Lonely Hearts" columns. Unlike the family-oriented matrimonial advertisements common in India, many of these notices were placed directly by individuals seeking companionship or marriage.</p>
-        <p>A typical advertisement might describe a person's occupation, interests, and hopes for the future. Readers responded through letters, and conversations often began through written correspondence. Although the format was different, the purpose remained remarkably similar. People were searching for meaningful relationships in a world that was becoming larger and more mobile.</p>
-        <p>Whether it was a matrimonial advertisement in India or a personal column in London or New York, the underlying challenge was the same. Traditional networks were no longer enough, and society was searching for new ways to bring people together.</p>
+        <p>In India, matrimonial advertisements gradually became an important way for families to discover proposals from other cities and communities.</p>
+        <p>A few carefully written lines could describe a person's education, profession, family background, and expectations.</p>
 
-        <h2>The Rise of Marriage Bureaus</h2>
+        <figure class="inline clip">
+          <img id="p3Clip1" src="" alt="A small newspaper classified advertisement for a matrimony service">
+          <figcaption>A few carefully written lines could introduce an entire family.</figcaption>
+        </figure>
+
+        <p>The newspaper had become a new kind of matchmaker.</p>
+
+        <h2>The Sunday Matrimonial Search</h2>
+        <p>As these advertisements became more popular, newspapers began dedicating sections to matrimonial listings.</p>
+
+        <figure class="inline clip">
+          <img id="p3Clip3" src="" alt="A newspaper matrimonial section listing brides wanted advertisements">
+          <figcaption>Whole sections of the newspaper were given over to matrimonial listings.</figcaption>
+        </figure>
+
+        <p>For many families, the matrimonial pages became part of the weekend routine. Profiles were read, advertisements were marked, and promising matches were discussed at home.</p>
+
+        <figure class="inline clip">
+          <img id="p3Clip2" src="" alt="A newspaper matrimonial classifieds page with one advertisement circled in pen">
+          <figcaption>A promising advertisement, marked to discuss at home.</figcaption>
+        </figure>
+
+        <p>Then came the next step.</p>
+        <p>Letters were exchanged. Photographs and horoscopes travelled between cities. Families made phone calls and arranged introductions.</p>
+
+        <figure class="inline">
+          <img id="p3Fig2" src="" alt="A family gathered around a table reading letters and photographs sent in reply to a matrimonial advertisement">
+          <figcaption>Letters, photographs and horoscopes travelled between cities.</figcaption>
+        </figure>
+
+        <p>It was a slow process compared with today's instant communication, but it opened something that earlier generations had rarely experienced at this scale:</p>
+        <p><strong>A search that could cross geographical boundaries.</strong></p>
+        <p>A family no longer had to depend entirely on people living nearby. A proposal could arrive from another city — or even another region.</p>
+
+        <h2>From Matchmakers to Marriage Bureaus</h2>
+        <p>More advertisements meant more possibilities. But it also meant more information to manage.</p>
+        <p>This helped create another important development: <strong>marriage bureaus.</strong></p>
+        <p>Traditional matchmakers often depended on personal knowledge and community networks. Marriage bureaus introduced a more organized system.</p>
+        <p>They maintained registers containing details about families, education, professions, preferences, photographs, and sometimes horoscopes. Families could visit an office, share what they were looking for, and receive help identifying potential matches.</p>
 
         <figure class="inline">
           <img id="p3Fig4" src="" alt="A mid-century marriage bureau office with staff, families, shelves of registers and drawers of index cards">
-          <figcaption>Registers, photographs and horoscopes — matchmaking becomes an office.</figcaption>
+          <figcaption>Registers, photographs and horoscopes: matchmaking becomes more organized.</figcaption>
         </figure>
 
-        <p>As matrimonial advertisements became more successful, another challenge emerged. Newspapers created opportunities, but they also created volume. A single advertisement could attract dozens of responses, leaving families with more options than they knew how to evaluate.</p>
-        <p>This need gave rise to marriage bureaus.</p>
-        <p>Unlike traditional matchmakers who relied on personal memory and community connections, marriage bureaus adopted a more organized approach. They maintained registers filled with family details, collected photographs, stored horoscopes, and carefully recorded preferences. Families could visit an office, discuss their expectations, and receive assistance in identifying suitable matches.</p>
-        <p>Walking into a marriage bureau during the mid-twentieth century felt very different from visiting a village elder. Shelves were filled with files. Registers contained thousands of profiles. Staff members carefully reviewed information and searched for compatible matches. It was matchmaking becoming structured, professional, and scalable.</p>
-        <p>For many families, marriage bureaus represented the perfect balance between tradition and modernity. They preserved the personal touch of traditional matchmaking while embracing the efficiency needed for a rapidly changing society.</p>
+        <p>Matchmaking was becoming more structured.</p>
+        <p>It was still personal and family-oriented, but it was no longer limited to one person's memory or one community's network.</p>
 
-        <h2>When Matchmaking Reached Television</h2>
+        <h2>When Matchmaking Entered the Living Room</h2>
+        <p>Then came television.</p>
+        <p>By the late twentieth century, television had become part of everyday family life. Naturally, matchmaking found its way onto the screen.</p>
+        <p>For Tamil families, programs such as <strong>Kalyanamalai</strong> became part of this changing matrimonial landscape. Profiles could now reach audiences across towns and cities without requiring families to search through newspaper pages or visit a bureau.</p>
 
         <figure class="inline">
           <img id="p3Fig5" src="" alt="A family gathered in a living room watching a televised matrimonial programme showing two portrait photographs">
           <figcaption>Profiles reached the living room, and the whole family watched together.</figcaption>
         </figure>
 
-        <p>Just as newspapers transformed matchmaking in one generation, television transformed it in the next.</p>
-        <p>By the late twentieth century, television had become a central part of family life. Households gathered every evening to watch news, dramas, and entertainment programs. It was only natural that matchmaking would eventually find a place there as well.</p>
-        <p>For many Tamil families, programs such as Kalyanamalai became an important milestone in the evolution of matchmaking. Through television, matrimonial profiles reached audiences across cities, towns, and villages. Families who once relied solely on local networks or newspaper advertisements could now discover potential alliances through a medium that entered their homes every day.</p>
-        <p>The experience felt both familiar and revolutionary. Parents discussed profiles while watching television. Contact details were noted down. Conversations began. Matches were explored. The matchmaking journey that had once depended on village elders had now become part of mass media.</p>
-        <p>Television brought matchmaking into living rooms and helped bridge the gap between traditional methods and the digital future that was fast approaching.</p>
+        <p>The medium had changed again.</p>
 
-        <h2>A New Era Was Approaching</h2>
+        <div class="pull">
+          <p>Village elder → newspaper → marriage bureau → television.</p>
+        </div>
+
+        <p>Each step expanded the reach of matchmaking.</p>
+
+        <h2>The Digital Door Was Opening</h2>
+        <p>Looking back, every transformation happened for the same reason: <strong>society was changing.</strong></p>
+        <p>People were travelling farther. Cities were growing. Communities were becoming more connected. The traditional ways of finding a partner needed to keep up.</p>
+        <p>But the biggest transformation was still ahead.</p>
 
         <figure class="inline">
           <img id="p3Fig6" src="" alt="A panorama running from a village elder under a banyan tree through a bureau office and a television to a couple walking toward a glowing modern city">
-          <figcaption>From the banyan tree to the city skyline, in a little over a century.</figcaption>
+          <figcaption>From the village elder to the city, and on toward the digital age.</figcaption>
         </figure>
 
-        <p>Looking back, the journey of matchmaking is remarkable. What began with village elders, astrologers, and trusted community networks gradually evolved into newspaper advertisements, matrimonial columns, marriage bureaus, and television programs. Each transformation emerged because society itself was changing. As people moved farther from their hometowns and communities expanded beyond traditional boundaries, matchmaking adapted to meet new challenges.</p>
-        <p>Yet the biggest transformation was still waiting just beyond the horizon.</p>
-        <p>By the late twentieth century, computers were beginning to enter homes and offices. The internet was slowly connecting people across cities, countries, and continents in ways that previous generations could never have imagined. Information that once travelled through letters, newspaper advertisements, and television broadcasts would soon move instantly across digital networks.</p>
-        <p>For the first time in history, a family searching for a life partner would no longer be limited by geography, newspaper circulation, or office records. The search for meaningful relationships was about to enter an entirely new chapter.</p>
-        <p>The age of paper profiles was drawing to a close. A new era was approaching.</p>
-        <p>In the next chapter of our Matrimonial Retrospective series, we explore how the internet transformed matchmaking, gave rise to online matrimonial platforms, and forever changed the way millions of people search for life partners in the modern world.</p>
-        <p><em>Continue reading: <a href="#retrospective-internet">Part 4: From Profiles to Possibilities</a></em></p>
+        <p>Computers and the internet were beginning to change how information was shared. Suddenly, profiles could move across cities and countries almost instantly.</p>
+        <p>There would be no waiting for the Sunday newspaper.</p>
+        <p>No searching through stacks of registers.</p>
+        <p>No need to depend entirely on television schedules.</p>
+        <p>The profile was about to become <strong>digital</strong>.</p>
+        <p>And with it, the search for a life partner was about to become more accessible, searchable, and connected than ever before.</p>
+        <p>In the next chapter of our Matrimonial Retrospective, we explore how the internet transformed matchmaking and gave rise to the online matrimonial platforms that changed the way people search for life partners.</p>
 
-        <p><em>Catch up on the series: <a href="#retrospective-ancient">Part 1: How Did People Find Their Life Partners in Ancient Times?</a> &nbsp;·&nbsp; <a href="#retrospective-stars">Part 2: When Families Started Looking Toward the Stars</a></em></p>
+        <p><strong>Continue reading:</strong> <em><a href="#retrospective-internet">Part 4: From Profiles to Possibilities</a></em></p>
+        <p><strong>Catch up on the series:</strong> <em><a href="#retrospective-ancient">Part 1: How Did People Find Their Life Partners in Ancient Times?</a> &nbsp;·&nbsp; <a href="#retrospective-stars">Part 2: When Families Started Looking Toward the Stars</a></em></p>
       </div>
 
-      <div class="a-foot">
+      
+<div class="a-foot">
         <div class="author">
           <span class="av">K</span>
           <div><b>Team Kalyan</b><span>Kalyan Matrimony editorial desk</span></div>
@@ -697,10 +731,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="a-head">
         <span class="pill">Inspiring Through Stories</span>
         <h1>Matrimonial Retrospective Part 2: When Families Started Looking Toward the Stars</h1>
-        <p class="stand">If a warrior could prove his strength in a competition, how could anyone prove that a marriage would last a lifetime?</p>
+        <p class="stand">If a warrior could prove his strength in a competition, how could anyone know whether a marriage would last a lifetime?</p>
         <div class="a-meta">
           <span class="av">K</span><span>Team Kalyan</span>
-          <span class="dot"></span><span>11 min read</span>
+          <span class="dot"></span><span>4 min read</span>
           <span class="dot"></span><span>19 August 2026</span>
         </div>
       </div>
@@ -711,119 +745,125 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </figure>
 
       <div class="a-body">
-        <p class="lead">The celebrations had ended. The flower garlands from grand Swayamvaras had faded. The palace halls that once echoed with the cheers of kings, warriors, and noblemen slowly grew quieter. Across kingdoms, the age of royal competitions and heroic challenges was beginning to change.</p>
+        <p class="lead">The grand Swayamvaras of earlier times had made marriage a public spectacle. Princes competed, warriors displayed their skills, and royal families formed alliances.</p>
+        <p>But as societies grew and communities expanded, finding a suitable life partner became less about a single royal challenge and more about understanding families, traditions, and compatibility.</p>
+        <p>People began looking for answers in another place.</p>
 
-        <p>For centuries, stories like Rama lifting Shiva's bow and Arjuna striking the eye of a rotating fish had captured people's imagination. Strength, courage, and skill had once determined who won the hand of a princess. But as kingdoms expanded and societies became more organized, marriages gradually moved beyond royal courts.</p>
-        <p>Life was changing.</p>
-        <p>Trade routes connected distant regions. Communities grew larger. Families often knew little about the people living beyond their towns and villages. The search for a suitable life partner was becoming more complicated than it had been before.</p>
-        <p>And with that came a new question. If a warrior could prove his strength in a competition, how could anyone prove that a marriage would last a lifetime?</p>
-        <p>For many families, the answer was not found in royal courts or battlefields. It was found in the night sky.</p>
+        <div class="pull">
+          <p>The stars.</p>
+        </div>
 
         <h2>The Night Sky That Connected Civilizations</h2>
+        <p>Thousands of years ago, the night sky was part of everyday life.</p>
+        <p>People across Mesopotamia, Egypt, Greece, China, India, and other civilizations carefully observed the movements of celestial bodies. These observations helped communities understand seasons, calendars, religious occasions, and the passage of time.</p>
 
         <figure class="inline">
           <img id="p2Fig1" src="" alt="Scholars from India, Egypt, Greece, China and Mesopotamia studying the same constellation-filled night sky">
-          <figcaption>India, Egypt, Greece, China, Mesopotamia — the same sky, studied a world apart.</figcaption>
+          <figcaption>India, Egypt, Greece, China, Mesopotamia: the same sky, studied a world apart.</figcaption>
         </figure>
 
-        <p>Imagine standing beneath a clear night sky thousands of years ago. There are no city lights. No towering buildings. No glowing screens competing for attention. Above you stretch an endless canvas of stars.</p>
-        <p>People across the world looked at that same sky with wonder. A farmer in Mesopotamia studied the heavens before planting his crops. An Egyptian priest watched the stars to determine sacred dates. A Greek scholar carefully recorded the movements of planets.</p>
-        <p>In China, astronomers observed celestial patterns, believing they reflected the balance of the universe itself. Though separated by continents and cultures, they shared a common belief.</p>
+        <p>Over generations, some traditions began connecting celestial patterns with human lives and destiny.</p>
+        <p>In India, astrology gradually became part of several important life decisions, including marriage.</p>
+        <p>The question was no longer simply:</p>
+        <p><strong>“Who is strong enough to marry?”</strong></p>
+        <p>It became:</p>
+        <p><strong>“Are these two people compatible?”</strong></p>
 
-        <div class="pull">
-          <p>The stars were trying to tell a story.</p>
-        </div>
-
-        <p>At first, these observations helped people understand seasons, weather, and the passing of time. But gradually, a more fascinating idea began to emerge.</p>
-        <p>What if the heavens could reveal something about human lives? What if the moment a person was born carried a hidden connection to their future?</p>
-        <p>The idea spread slowly across civilizations, carried through generations of scholars, priests, and astrologers. And eventually, it found its way into marriage.</p>
-
-        <h2>A Marriage Proposal Arrives</h2>
+        <h2>When Families Looked at the Kundali</h2>
+        <p>Imagine a marriage proposal arriving at an Indian household centuries ago.</p>
 
         <figure class="inline">
           <img id="p2Fig2" src="" alt="A village elder arriving at a family's doorstep at sunset carrying a marriage proposal, with the family gathered to receive him">
-          <figcaption>An elder arrives at sunset, carrying news of a proposal.</figcaption>
+          <figcaption>A marriage proposal arrives, and the families begin to talk.</figcaption>
         </figure>
 
-        <p>Imagine an Indian village many centuries ago. The afternoon sun is beginning to set when a respected elder arrives at a family's home carrying news of a marriage proposal. The young man's family is well respected. Their values seem good. Their traditions are familiar. On the surface, the proposal appears promising.</p>
-        <p>The families gather. Conversations begin. Questions are asked. Yet nobody rushes to make a decision. Instead, a messenger is sent to call the village astrologer.</p>
-        <p>As evening falls, oil lamps flicker softly around the courtyard. Palm-leaf manuscripts are carefully unfolded. The astrologer listens as family members provide the birth details of the young man and woman.</p>
-        <p>The atmosphere is calm but important. Everyone waits. Not because they are searching for wealth or status. They are searching for reassurance.</p>
-        <p>Will these two people understand one another? Will their lives move in harmony? Will this marriage bring happiness to both families?</p>
-        <p>This moment became increasingly common across many parts of India. While other civilizations used astrology to understand kingdoms, seasons, and individual destiny, Indian families began asking a different question.</p>
-        <p><strong>Could astrology help determine whether two people were meant to build a life together?</strong></p>
-
-        <h2>When Compatibility Became the Focus</h2>
+        <p>The families would discuss the proposal, consider their backgrounds, values, and reputation, and then consult an astrologer. Birth details of the prospective bride and groom could be used to prepare their <strong>Kundalis</strong>, or birth charts.</p>
+        <p>Astrologers traditionally examined factors such as the Moon sign, Nakshatra, planetary positions, and other elements of the charts.</p>
+        <p>One widely known approach is <strong>Guna Milan</strong>, which compares different aspects of the two birth charts to assess traditional astrological compatibility.</p>
 
         <figure class="inline">
           <img id="p2Fig3" src="" alt="An astrologer comparing the bride's and groom's birth charts by lamplight while both families watch">
           <figcaption>Two birth charts, studied side by side.</figcaption>
         </figure>
 
-        <p>Over time, astrologers developed methods to compare the birth charts of prospective brides and grooms.</p>
-        <p>The birth chart, known as a Kundali, was created using the exact time, date, and place of a person's birth. Families believed that the positions of planets and stars at that moment could reveal important aspects of a person's character and life journey.</p>
-        <p>When a marriage proposal arrived, the Kundalis of both individuals were studied together. Astrologers examined Moon signs, Nakshatras, planetary positions, and various indicators of compatibility. One of the most widely known systems was Guna Milan, which evaluated different aspects of harmony between two individuals.</p>
-        <p>To modern readers, this may sound unusual. But for families living centuries ago, it made perfect sense. There were no dating apps. No photographs. No social media profiles. No easy way to spend time getting to know someone before marriage.</p>
-        <p>Families relied on the knowledge and tools available to them. Astrology became one of those tools. Not because people feared marriage, but because they valued it deeply.</p>
-        <p>A marriage was expected to last a lifetime, and families wanted every possible assurance that they were making the right decision.</p>
+        <p>For families living without photographs, social media, dating apps, or easy ways to meet potential partners, these traditions provided one framework through which they could evaluate a proposal.</p>
+        <p>Astrology was not the only consideration. Family background, character, community, values, and practical circumstances also played important roles in matrimonial decisions.</p>
+        <p>The goal was simple: <strong>to make an important decision with as much confidence as possible.</strong></p>
 
-        <h2>Different Paths, Similar Hopes</h2>
+        <h2>Different Cultures, Similar Questions</h2>
+        <p>India was not the only society to develop traditions around compatibility and marriage.</p>
+        <p>In China, traditional matchmaking could involve considerations such as zodiac signs, Yin and Yang, and the Five Elements.</p>
+        <p>In Jewish communities, the <strong>Shadchan</strong> served as a matchmaker who helped introduce potential partners.</p>
+        <p>Across Christian Europe, especially among noble families, marriage decisions could involve family lineage, social position, property, political alliances, and approval from religious authorities.</p>
 
         <figure class="inline">
           <img id="p2Fig4" src="" alt="Four scenes of matchmaking traditions from India, China, Islamic societies and Christian Europe">
-          <figcaption>Different cultures, different traditions, the same hope for a happy married life.</figcaption>
+          <figcaption>Different cultures, different customs, the same search for a suitable partner.</figcaption>
         </figure>
 
-        <p>India was not alone in seeking guidance before marriage. In China, families often consulted experts who studied zodiac animals, the balance of Yin and Yang, and the Five Elements before important life events.</p>
-        <p>In many Islamic societies, family reputation, character, faith, and lineage remained central to matchmaking, though astrology was also studied in certain historical periods.</p>
-        <p>Across Christian Europe, noble families evaluated social standing, family background, and church approval when arranging marriages.</p>
-        <p>The methods were different. The questions were the same. Every family wanted confidence. Every parent wanted happiness for their children. Every generation searched for a way to identify a suitable life partner. The search itself was universal.</p>
+        <p>The customs varied widely.</p>
+        <p>But the question behind them was surprisingly familiar:</p>
+        <p><strong>Who would make a suitable life partner?</strong></p>
 
-        <h2>The First Matchmakers</h2>
+        <h2>The Rise of the Matchmaker</h2>
+        <p>As communities became larger, another figure became increasingly important — the <strong>matchmaker</strong>.</p>
+        <p>Matchmakers connected families who might otherwise never have met. They carried information about prospective brides and grooms, introduced families, and helped start conversations about marriage.</p>
+        <p>In different communities, this role was performed by professional matchmakers, community elders, religious figures, or trusted intermediaries.</p>
 
         <figure class="inline">
           <img id="p2Fig5" src="" alt="Two families seated across from each other in a lamplit courtyard while an elder speaks between them">
-          <figcaption>Two families, one intermediary, and a conversation that could begin a new family.</figcaption>
+          <figcaption>Two families, one trusted intermediary, and the start of a conversation about marriage.</figcaption>
         </figure>
 
-        <p>As communities continued to grow, another important figure entered the story. The matchmaker. In an Indian village, it might have been a respected temple elder.</p>
-        <p>In China, it could have been a professional matchmaker carrying proposals between families. In Jewish communities, a Shadchan helped introduce suitable matches. Across Europe, marriage brokers connected noble families seeking alliances.</p>
-        <p>These individuals travelled between homes carrying more than information. They carried possibilities. A conversation. A proposal. The beginning of a new family.</p>
-        <p>Long before modern technology, they connected people who might never have met otherwise.</p>
+        <p>In a world without phones, databases, or search engines, these people became the human network connecting potential matches.</p>
+        <p>And this is where the story begins to feel surprisingly familiar.</p>
 
-        <h2>The World's First Matrimonial Networks</h2>
+        <h2>The World's Earliest Matrimonial Networks</h2>
+        <p>An astrologer had information about a person's birth and traditional compatibility.</p>
+        <p>A community elder knew families and their backgrounds.</p>
+        <p>A matchmaker knew who was looking for a partner.</p>
+        <p>Together, these people created informal networks for finding suitable matches.</p>
+        <p>They were not matrimonial websites, of course.</p>
+        <p>But the basic idea was already there:</p>
+
+        <div class="pull">
+          <p>Collect information. Understand preferences. Connect suitable people.</p>
+        </div>
 
         <figure class="inline">
           <img id="p2Fig6" src="" alt="A golden thread connecting astrologers, elders and matchmakers of the past to a modern couple browsing profiles on a phone">
           <figcaption>A single thread running from palm-leaf charts to the screens of today.</figcaption>
         </figure>
 
-        <p>Looking back today, it is easy to see something surprisingly familiar. The astrologers, priests, matchmakers, and community elders of the past were performing a role not entirely different from what matrimonial platforms do today.</p>
-        <p>They gathered information. They understood family preferences. They evaluated compatibility. And most importantly, they helped people find suitable life partners.</p>
-        <p>The methods have changed dramatically over the centuries, but the goal remains remarkably similar.</p>
-        <p>In many ways, platforms such as Kalyan Matrimony continue a journey that began long ago, helping families connect while preserving the values of compatibility, trust, and meaningful relationships.</p>
+        <p>Over the centuries, the tools would change dramatically. The search for a life partner, however, would remain.</p>
 
-        <h2>The Story Continues...</h2>
+        <h2>From Stars to Search</h2>
+        <p>For generations, families relied on astrologers, matchmakers, community networks, and trusted intermediaries.</p>
+        <p>Then society began changing again.</p>
+        <p>Printing presses spread. Newspapers reached more households. People moved from villages to cities. Communities expanded beyond traditional boundaries.</p>
+        <p>Finding a partner was no longer limited to the people living nearby.</p>
+        <p>A new possibility emerged: <strong>what if marriage proposals could travel through print?</strong></p>
+        <p>Matrimonial advertisements and marriage bureaus would soon transform the way people discovered potential partners.</p>
+        <p>The search for a life partner was about to leave the village and enter the city.</p>
+        <p>And eventually, it would move from paper to a screen.</p>
 
         <figure class="inline">
           <img id="p2Fig7" src="" alt="A timeline running from astrologers and matchmakers through printing presses and marriage bureaus to a couple using a matrimony app">
-          <figcaption>Different times. Different tools. The same timeless search for a life partner.</figcaption>
+          <figcaption>From the stars to print, and eventually to the screen.</figcaption>
         </figure>
 
-        <p>For centuries, astrologers, priests, and matchmakers guided families through one of life's most important decisions. But another transformation was already approaching.</p>
-        <p>Printing presses would soon spread across cities. Newspapers would begin reaching homes. Communities would expand beyond village boundaries. People would move farther from their ancestral towns than ever before.</p>
-        <p>The old methods were about to face a new challenge.</p>
-        <p>And with it came the birth of matrimonial advertisements, marriage bureaus, and the earliest forms of modern matchmaking.</p>
-        <p>In the next chapter of our Matrimonial Retrospective series, we explore how the search for a life partner entered a new era, one that would eventually lead to the matrimonial platforms we know today.</p>
+        <p><strong>In Part 3 of our Matrimonial Retrospective, we explore how newspapers, matrimonial advertisements, and marriage bureaus created the earliest forms of modern matchmaking.</strong></p>
         <p><em>Continue reading: <a href="#retrospective-city">Part 3: When the Village Became a City</a></em></p>
+        <p><em>Missed the beginning? Read: <a href="#retrospective-ancient">Part 1: How Did People Find Their Life Partners in Ancient Times?</a></em></p>
 
-        <p><em>Missed the beginning? Read <a href="#retrospective-ancient">Part 1: How Did People Find Their Life Partners in Ancient Times?</a></em></p>
+        <p>From astrology and family networks to shared values and personal preferences, the way people search for a life partner has continued to evolve. Today, matrimonial platforms bring many of these elements together, helping people discover profiles and connections based on what matters to them.</p>
+        <p>If you are beginning your own search, <strong>Kalyan Matrimony</strong> can help you explore profiles and connections that align with your expectations.</p>
 
-        <p>From looking to the stars for signs of compatibility to understanding shared values, interests, and expectations, the ways of finding a life partner have continued to evolve. While traditions remain an important part of many matrimonial journeys, finding the right connection today can also begin with getting to know people who share what matters to you. If you are beginning that journey, <a href="https://www.kalyanmatrimony.com/" target="_blank" rel="noopener">Kalyan Matrimony</a> can help you discover profiles and connections that align with your expectations.</p>
         <p class="hashtags">#KalyanMatrimony #MatrimonialJourney #FindingALifePartner #MeaningfulConnections #LifePartnerSearch #MarriageJourney #MatrimonialTraditions #FindingYourMatch #CompatibilityMatters #PartnerSearch</p>
       </div>
 
-      <div class="a-foot">
+      
+<div class="a-foot">
         <div class="author">
           <span class="av">K</span>
           <div><b>Team Kalyan</b><span>Kalyan Matrimony editorial desk</span></div>
@@ -866,10 +906,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="a-head">
         <span class="pill">Inspiring Through Stories</span>
         <h1>Matrimonial Retrospective Part 1: How Did People Find Their Life Partners in Ancient Times?</h1>
-        <p class="stand">Long before matrimonial websites, a wedding could change the fate of kingdoms.</p>
+        <p class="stand">Long before matrimonial websites, marriage could change the fate of entire kingdoms.</p>
         <div class="a-meta">
           <span class="av">K</span><span>Team Kalyan</span>
-          <span class="dot"></span><span>12 min read</span>
+          <span class="dot"></span><span>4 min read</span>
           <span class="dot"></span><span>19 August 2026</span>
         </div>
       </div>
@@ -880,103 +920,82 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </figure>
 
       <div class="a-body">
-        <p class="lead">Long before matrimonial websites, wedding planners, and horoscope-matching platforms existed, marriage was often an event that could change the fate of kingdoms. Across the ancient world, royal weddings were not simply celebrations of love. They were political decisions, diplomatic agreements, and symbols of power that shaped the course of history.</p>
+        <p class="lead">In ancient societies, marriage was often more than a personal decision. For royal families, it could strengthen alliances, secure peace, preserve dynasties, or expand political influence. A wedding could sometimes achieve what years of conflict could not.</p>
 
-        <p>Imagine a messenger riding across dusty roads on horseback. In his hands is a royal announcement sealed with the emblem of a powerful kingdom. He travels through forests, mountains, and neighbouring territories carrying news that would attract kings, princes, warriors, and noblemen from distant lands.</p>
+        <h2>When Marriage Meant More Than Love</h2>
+        <p>Royal marriages were carefully considered across many ancient civilizations. Kings and rulers often married into other powerful families to build relationships between kingdoms.</p>
 
         <figure class="inline">
           <img id="histFig1" src="" alt="A royal messenger on horseback carrying a sealed proclamation through a crowded ancient city">
-          <figcaption>A sealed proclamation, carried across kingdoms.</figcaption>
+          <figcaption>Royal proclamations carried news of marriage from one kingdom to the next.</figcaption>
         </figure>
 
-        <p>A grand Swayamvara has been announced. As the royal proclamation travels across the land, excitement begins to spread through distant kingdoms. Young princes see an opportunity to make history, while seasoned warriors believe this may be their chance to earn a place beside royalty.</p>
-        <p>Unlike many royal marriages arranged behind palace walls, a Swayamvara allows the princess to choose her husband from among the gathered suitors. However, only those who can prove themselves worthy are given that chance. Before the royal court, they must demonstrate exceptional skill, strength, or bravery in challenges designed to separate the ordinary from the extraordinary.</p>
-        <p>The princess of the kingdom is ready to choose her husband. For ambitious rulers and brave warriors, this is not merely an invitation to a wedding. It is an opportunity to win prestige, form alliances, and become part of a royal lineage.</p>
-
-        <h2>When Kingdoms Were United Through Marriage</h2>
-        <p>In many ancient civilizations, marriage was one of the strongest tools of diplomacy. A victorious king did not always destroy a defeated kingdom. Instead, he often strengthened his position through marriage alliances.</p>
-        <p>History is filled with examples of royal families using marriage to secure peace. Across Europe, kings married princesses from rival kingdoms to avoid future conflicts. In Ancient Egypt, royal marriages were carefully arranged to preserve dynasties and strengthen political authority. In Persia and other powerful empires, marriage alliances helped rulers expand influence without drawing their swords.</p>
-
-        <div class="pull">
-          <p>For rulers, a wedding could achieve what years of warfare sometimes could not.</p>
-        </div>
-
-        <h2>The Grand Tradition of Swayamvara</h2>
-        <p>Among the many marriage traditions recorded in history, few are as fascinating as the Swayamvara tradition of ancient India.</p>
-        <p>Unlike arranged royal marriages, a Swayamvara was often a public event where a princess selected her husband from a gathering of eligible suitors. The announcement of a Swayamvara would spread across kingdoms, attracting princes, warriors, and noblemen eager to prove their worth.</p>
+        <p>But not every marriage was decided behind palace walls.</p>
+        <p>In ancient India, the Swayamvara was one of the most fascinating traditions associated with royal marriages. A princess could choose her husband from a gathering of eligible suitors, often after they completed a challenge that tested their strength, skill, intelligence, or courage.</p>
+        <p>Princes and warriors would travel from distant kingdoms hoping to prove themselves worthy.</p>
 
         <figure class="inline">
           <img id="histFig2" src="" alt="A princess seated on a golden throne facing a hall filled with seated princes and warriors">
-          <figcaption>The court assembles, and the princess prepares to choose.</figcaption>
+          <figcaption>At a Swayamvara, the princess chose from the suitors gathered before her.</figcaption>
         </figure>
 
-        <p>The royal court would be decorated magnificently. Nobles occupied their seats. Musicians filled the halls with music. Citizens gathered outside palace gates hoping to witness history unfold.</p>
-        <p>Yet not every prince who arrived could become the chosen groom. Most Swayamvaras required contestants to demonstrate exceptional qualities such as strength, intelligence, courage, focus, or skill. Only the worthy would succeed.</p>
-
-        <h2>The Day Rama Lifted Shiva's Bow</h2>
-        <p>One of the most famous Swayamvaras in Indian tradition belongs to Princess Sita.</p>
-        <p>King Janaka of Mithila announced a challenge unlike any other. Whoever could lift and string the divine bow of Lord Shiva would win the hand of his daughter.</p>
-        <p>News of the challenge spread across kingdoms. Princes and warriors arrived with confidence, believing themselves capable of completing the task. One after another they approached the mighty bow. One after another they failed. The bow was simply too heavy.</p>
-        <p>Then a young prince named Rama stepped forward.</p>
-        <p>To the amazement of everyone present, Rama lifted the divine weapon with ease. As he attempted to string it, the bow broke into two pieces with a thunderous sound that echoed throughout the court. The challenge was complete.</p>
+        <h2>The Challenge of Sita's Swayamvara</h2>
+        <p>One of the most famous examples comes from the story of Princess Sita.</p>
+        <p>King Janaka of Mithila announced that whoever could lift and string the divine bow of Lord Shiva would win Sita's hand in marriage.</p>
+        <p>Many powerful warriors attempted the challenge but failed.</p>
+        <p>Then Rama stepped forward.</p>
+        <p>He lifted the bow and, while attempting to string it, broke it with tremendous force. Sita then placed the ceremonial garland around Rama's neck, marking her choice.</p>
 
         <figure class="inline">
           <img id="histFig3" src="" alt="A bride placing a ceremonial garland around the groom's neck before a court of nobles as petals fall">
-          <figcaption>Before an audience of kings and nobles, the garland marks the chosen one.</figcaption>
+          <figcaption>The ceremonial garland marked the princess's choice.</figcaption>
         </figure>
 
-        <p>Before an audience of kings and nobles, Sita placed the ceremonial garland around Rama's neck, marking him as her chosen husband. The marriage that followed would become one of the most celebrated unions in Indian history.</p>
+        <p>The story became one of the most celebrated marriage narratives in Indian tradition.</p>
 
-        <h2>The Impossible Challenge of Draupadi's Swayamvara</h2>
-        <p>Generations later, another Swayamvara would capture the imagination of the ancient world.</p>
-        <p>Princess Draupadi of Panchala was to choose her husband through a test of skill. Suspended high above the court was a rotating fish. Below it stood a vessel filled with water. Contestants could not look directly at the target. They had to aim at the fish while looking only at its reflection.</p>
-        <p>Warriors from across the land attempted the challenge. Each failed. Then Arjuna stepped forward.</p>
+        <h2>When Skill Chose the Groom</h2>
+        <p>Another famous Swayamvara appears in the story of Draupadi.</p>
+        <p>Her challenge required extraordinary focus. A rotating fish was suspended above the royal court, while contestants had to aim at it by looking only at its reflection in water.</p>
+        <p>Many warriors attempted the feat.</p>
+        <p>Arjuna succeeded.</p>
 
         <figure class="inline">
           <img id="histFig4" src="" alt="An archer aiming upward at a rotating fish while watching its reflection in a vessel of water, surrounded by a royal court">
           <figcaption>One arrow, aimed at a reflection.</figcaption>
         </figure>
 
-        <p>Calm and focused, he fixed his gaze on the reflection, drew his bow, and released his arrow. In a single moment, the fish's eye was struck. The crowd erupted in celebration. Draupadi had found her husband.</p>
-        <p>The story remains one of the most iconic examples of how skill, discipline, and determination were valued in ancient royal marriages.</p>
+        <p>These stories reflect how qualities such as courage, discipline, strength, and skill were celebrated within traditional accounts of royal marriage.</p>
 
-        <h2>Beyond India: Did Other Civilizations Have Similar Traditions?</h2>
-        <p>While Swayamvara is one of the most celebrated marriage traditions in Indian history, the idea of suitors competing to win a bride's hand was not unique to India. Across the ancient and medieval world, stories and customs emerged that reflected remarkably similar themes.</p>
-        <p>In Ancient Greece, one such story appears in Homer's Odyssey. As years passed without any news of King Odysseus, many noblemen gathered in his palace hoping to marry his wife, Penelope. To determine who was worthy, a challenge was announced. The suitors had to string Odysseus' mighty bow and shoot an arrow through a series of axe heads. One after another they failed. The contest became a test of strength and skill, much like the challenges seen in Indian Swayamvaras.</p>
-        <p>Centuries later, across medieval Europe, grand tournaments and jousting competitions became a common feature of royal courts. Knights travelled long distances to participate in these events, displaying their courage, combat skills, and chivalry before kings, queens, and noblewomen. Victorious knights often dedicated their triumphs to a lady whose admiration they hoped to earn. While these tournaments were not marriage ceremonies in the strict sense, they reflected the same belief that bravery, honour, and skill made a man worthy of recognition.</p>
+        <h2>Similar Stories Across the World</h2>
+        <p>The idea of proving one's worth was not limited to ancient India.</p>
+        <p>In Homer's Odyssey, Penelope's suitors are challenged to string Odysseus' powerful bow and shoot through a series of axe heads.</p>
+        <p>Centuries later, medieval European knights participated in tournaments and jousting competitions where courage, skill, and honour were displayed before royal courts.</p>
+        <p>In the Byzantine Empire, historical accounts also describe the Bride Show, in which eligible women were brought before the emperor's court and considered for royal marriage.</p>
 
         <figure class="inline">
           <img id="histFig5" src="" alt="A knight kneeling before noblewomen in a European court, beside a Byzantine bride show where young women are presented to an emperor and empress">
           <figcaption>From the tournaments of Europe to the bride shows of Byzantium.</figcaption>
         </figure>
 
-        <p>In the Byzantine Empire and later in medieval Russia, another fascinating tradition emerged. Known as the "Bride Show," it involved selecting a bride from among noblewomen gathered from different regions of the empire. Historical accounts describe young women travelling to royal courts where beauty, intelligence, character, and family background were carefully considered before a final choice was made. Though different from the Indian Swayamvara, it shared a similar spirit of choosing a partner from a carefully selected gathering of eligible candidates.</p>
-        <p>The Middle Ages also saw the rise of what historians call "Courtly Love." In castles and royal courts across Europe, noblewomen often became the focus of admiration for poets, knights, and warriors. Men composed poetry, performed acts of bravery, and competed in tournaments to demonstrate their devotion. Winning the favour of a respected noblewoman was considered one of the highest honours a knight could achieve.</p>
-        <p>Whether it was a prince attempting to lift Shiva's bow in Mithila, a warrior aiming at a rotating fish in Panchala, a Greek hero stringing a legendary bow, or a medieval knight competing in a tournament, the message remained surprisingly similar across cultures. Marriage and courtship were often linked to qualities such as courage, skill, determination, honour, and worthiness.</p>
+        <p>The customs were different, but the underlying idea was familiar: marriage could involve family, status, reputation, alliances, and the qualities considered valuable by society.</p>
 
-        <h2>Marriage in Ancient Religious Traditions</h2>
-        <p>As civilizations evolved, marriage became deeply intertwined with religion and culture.</p>
-        <p>In Hindu kingdoms, marriages were considered sacred unions blessed by divine rituals. Royal weddings were often grand ceremonies attended by priests, nobles, and citizens alike.</p>
-        <p>In Christian kingdoms across medieval Europe, marriages between royal families were frequently arranged by monarchs and religious authorities. These unions were viewed not only as political alliances but also as sacred commitments witnessed before God.</p>
-        <p>In Islamic dynasties, marriages played an important role in strengthening relationships between ruling families and influential communities. Historical records from the Abbasid, Ottoman, and Mughal periods show how royal marriages often helped secure loyalty and strengthen political networks.</p>
-        <p>Although customs differed from one civilization to another, one idea remained remarkably similar. Marriage was never viewed as a private affair. It was an event that could influence kingdoms, shape alliances, and leave a lasting mark on history.</p>
-
-        <h2>More Than a Wedding, A Moment in History</h2>
-        <p>Looking back at these stories, it becomes clear that ancient marriages were far more than personal celebrations. They were public events watched by entire kingdoms. They brought together rulers, warriors, priests, and citizens. They reflected the values of their time, whether those values emphasized strength, wisdom, diplomacy, faith, or royal duty.</p>
-        <p>From the halls of Mithila where Rama lifted Shiva's bow to the royal court where Arjuna struck the eye of a rotating fish, the story of marriage in ancient times is filled with drama, tradition, and history.</p>
-        <p>Yet the age of grand Swayamvaras and kingdom alliances would not last forever. As centuries passed, kingdoms changed, societies evolved, and a new influence began shaping matrimonial decisions.</p>
-        <p>People started looking beyond royal courts. <strong>They started looking toward the stars.</strong></p>
+        <h2>From Royal Courts to the Stars</h2>
+        <p>Over time, marriage traditions continued to evolve.</p>
+        <p>The focus gradually moved beyond royal challenges and political alliances. Families, communities, religion, astrology, and social networks began playing increasingly important roles in deciding who might make a suitable match.</p>
+        <p>The way people searched for a life partner was changing.</p>
+        <p><strong>The next influence would come from the stars.</strong></p>
 
         <figure class="inline">
           <img id="histFig6" src="" alt="An astrologer pointing to constellations in a night sky while a royal family studies a horoscope chart on a palace terrace">
           <figcaption>Coming next: the age of astrology and horoscope matching.</figcaption>
         </figure>
 
-        <p>In the next chapter of our Matrimonial Retrospective series, we explore how astrology, horoscope matching, and community-driven matchmaking transformed marriage traditions and laid the foundation for the matrimonial practices we know today.</p>
+        <p>In Part 2 of our Matrimonial Retrospective, we explore how astrology, horoscope matching, and community traditions began shaping the way families looked for a suitable partner.</p>
         <p><em>Continue reading: <a href="#retrospective-stars">Part 2: When Families Started Looking Toward the Stars</a></em></p>
       </div>
 
-      <div class="a-foot">
+      
+<div class="a-foot">
         <div class="author">
           <span class="av">K</span>
           <div><b>Team Kalyan</b><span>Kalyan Matrimony editorial desk</span></div>
@@ -1617,9 +1636,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   const posts=[
     // Newest posts
     {src:KM_P4_HERO,url:'#retrospective-internet',cat:'Inspiring Through Stories',t:'Matrimonial Retrospective Part 4: From Profiles to Possibilities – How the Internet Changed Matchmaking Forever',e:'From handwritten registers to verified digital profiles — the final chapter.',a:'Team Kalyan',r:'13 min'},
-    {src:KM_P3_HERO,url:'#retrospective-city',cat:'Inspiring Through Stories',t:'Matrimonial Retrospective Part 3: When the Village Became a City',e:'Newspaper columns, marriage bureaus and the television era of matchmaking.',a:'Team Kalyan',r:'11 min'},
-    {src:KM_P2_HERO,url:'#retrospective-stars',cat:'Inspiring Through Stories',t:'Matrimonial Retrospective Part 2: When Families Started Looking Toward the Stars',e:'How astrology, Kundalis and the first matchmakers reshaped the search.',a:'Team Kalyan',r:'11 min'},
-    {src:KM_HIST,url:'#retrospective-ancient',cat:'Inspiring Through Stories',t:'Matrimonial Retrospective Part 1: How Did People Find Their Life Partners in Ancient Times?',e:'Swayamvaras, bride shows and alliances that decided the fate of kingdoms.',a:'Team Kalyan',r:'12 min'},
+    {src:KM_P3_HERO,url:'#retrospective-city',cat:'Inspiring Through Stories',t:'Matrimonial Retrospective Part 3: When the Village Became a City',e:'Newspaper columns, marriage bureaus and the television era of matchmaking.',a:'Team Kalyan',r:'4 min'},
+    {src:KM_P2_HERO,url:'#retrospective-stars',cat:'Inspiring Through Stories',t:'Matrimonial Retrospective Part 2: When Families Started Looking Toward the Stars',e:'How astrology, Kundalis and the first matchmakers reshaped the search.',a:'Team Kalyan',r:'4 min'},
+    {src:KM_HIST,url:'#retrospective-ancient',cat:'Inspiring Through Stories',t:'Matrimonial Retrospective Part 1: How Did People Find Their Life Partners in Ancient Times?',e:'Swayamvaras, bride shows and alliances that decided the fate of kingdoms.',a:'Team Kalyan',r:'4 min'},
     {src:KM_MATCH,url:'#better-matches',cat:'Consult an Expert',t:'How to Find Better Matches Without Sending Hundreds of Requests',e:'A focused search beats sending requests to every profile you see.',a:'Team Kalyan',r:'3 min'},
     {src:KM_TEN,url:'#before-registering',cat:'Consult an Expert',t:'5 Things to Know Before Joining a Matrimony Site—Are You Ready to Begin?',e:'Five things worth knowing before you create your first profile.',a:'Team Kalyan',r:'3 min'},
     {src:KM_CHAT,url:'#first-chat',cat:'Consult an Expert',t:'5 Simple Ways to Start a Matrimony Chat—What Should You Say First?',e:'You do not need a clever opening line — just a real conversation.',a:'Team Kalyan',r:'3 min'},
@@ -1822,12 +1841,109 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     // open clicked one (if it wasn't already open)
     if(!isOpen){item.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px'}
   }));
-</script>
 
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-52PFF85D"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
- 
+  // ---------- comments: one box at the end of every article ----------
+  // Comments are kept per article (keyed by its #hash). Storage lives in the
+  // `commentStore` object below — swap its load/save for a server call to make
+  // comments visible to every visitor.
+  (function(){
+    const MAX=1000;
+    const OWNER_KEY='km-comment-owner';
+    const commentStore={
+      key:h=>'km-comments:'+h,
+      load(h){try{return JSON.parse(localStorage.getItem(this.key(h))||'[]')}catch(e){return []}},
+      save(h,list){try{localStorage.setItem(this.key(h),JSON.stringify(list));return true}catch(e){return false}}
+    };
+    let owner;
+    try{owner=localStorage.getItem(OWNER_KEY);if(!owner){owner=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem(OWNER_KEY,owner)}}catch(e){owner='session'}
+
+    const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    function ago(ts){
+      const s=Math.round((Date.now()-ts)/1000);
+      if(s<60)return 'just now';
+      const m=Math.round(s/60);if(m<60)return m+(m===1?' minute ago':' minutes ago');
+      const h=Math.round(m/60);if(h<24)return h+(h===1?' hour ago':' hours ago');
+      const d=Math.round(h/24);if(d<7)return d+(d===1?' day ago':' days ago');
+      return new Date(ts).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
+    }
+
+    Object.entries(ARTICLES).forEach(([hash,a])=>{
+      const view=document.getElementById(a.view);
+      const article=view && view.querySelector('article');
+      if(!article)return;
+      const uid=a.view;
+      const sec=document.createElement('section');
+      sec.className='comments';
+      sec.setAttribute('aria-labelledby',uid+'-c-title');
+      sec.innerHTML=`
+        <h2 id="${uid}-c-title">Comments <span class="count"></span></h2>
+        <p class="c-intro">Share your thoughts, your own story or a question for Team Kalyan.</p>
+        <form class="c-form" novalidate>
+          <label>Your name<input type="text" name="name" maxlength="60" autocomplete="name" required></label>
+          <label>Your comment<textarea name="text" maxlength="${MAX}" required></textarea></label>
+          <div class="c-row">
+            <span class="c-left">${MAX} characters left</span>
+            <button type="submit" disabled>Post comment</button>
+          </div>
+          <div class="c-msg" role="status" aria-live="polite"></div>
+        </form>
+        <ul class="c-list"></ul>
+        <p class="c-empty">No comments yet. Be the first to share your thoughts.</p>`;
+      article.after(sec);
+
+      const form=sec.querySelector('form'), nameIn=form.name, textIn=form.text;
+      const btn=form.querySelector('button'), left=form.querySelector('.c-left'), msg=form.querySelector('.c-msg');
+      const list=sec.querySelector('.c-list'), empty=sec.querySelector('.c-empty'), count=sec.querySelector('.count');
+      try{nameIn.value=localStorage.getItem('km-comment-name')||''}catch(e){}
+
+      function render(newId){
+        const items=commentStore.load(hash).sort((x,y)=>y.ts-x.ts);
+        count.textContent=items.length?`(${items.length})`:'';
+        empty.hidden=items.length>0;
+        list.innerHTML=items.map(c=>`
+          <li class="c-item${c.id===newId?' new':''}" data-id="${esc(c.id)}">
+            <span class="c-av" aria-hidden="true">${esc((c.name.trim()[0]||'?').toUpperCase())}</span>
+            <div>
+              <div class="c-head"><b>${esc(c.name)}</b><time datetime="${new Date(c.ts).toISOString()}">${ago(c.ts)}</time></div>
+              <p class="c-text">${esc(c.text)}</p>
+              ${c.owner===owner?'<button type="button" class="c-del">Delete</button>':''}
+            </div>
+          </li>`).join('');
+      }
+      function validate(){
+        const n=textIn.value.length;
+        left.textContent=(MAX-n)+' characters left';
+        left.classList.toggle('warn',MAX-n<50);
+        btn.disabled=!(nameIn.value.trim()&&textIn.value.trim());
+      }
+      nameIn.addEventListener('input',validate);
+      textIn.addEventListener('input',validate);
+
+      form.addEventListener('submit',e=>{
+        e.preventDefault();
+        const name=nameIn.value.trim().slice(0,60), text=textIn.value.trim().slice(0,MAX);
+        if(!name||!text)return;
+        const c={id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),name,text,ts:Date.now(),owner};
+        const items=commentStore.load(hash);items.push(c);
+        if(!commentStore.save(hash,items)){msg.textContent='Sorry, your comment could not be saved in this browser.';return}
+        try{localStorage.setItem('km-comment-name',name)}catch(e){}
+        textIn.value='';validate();
+        msg.textContent='Thank you! Your comment has been posted.';
+        setTimeout(()=>{msg.textContent=''},3500);
+        render(c.id);
+      });
+
+      list.addEventListener('click',e=>{
+        const del=e.target.closest('.c-del');if(!del)return;
+        if(!confirm('Delete this comment?'))return;
+        const id=del.closest('.c-item').dataset.id;
+        commentStore.save(hash,commentStore.load(hash).filter(c=>c.id!==id));
+        render();
+      });
+
+      validate();render();
+    });
+  })();
+</script>
 </body>
 </html>
