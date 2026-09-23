@@ -294,6 +294,26 @@
   .post-view .c-empty{color:var(--muted);font-size:14.5px;font-weight:300;font-style:italic;margin-top:22px;text-align:center}
   @media(max-width:760px){.post-view .comments{padding:30px 20px 26px}.post-view .c-form{padding:16px}}
   .c-form textarea:focus-visible{outline:none}
+  /* email verification */
+  .post-view .c-verify{display:grid;gap:8px}
+  .post-view .c-verify .c-lbl{font-size:13px;font-weight:600;color:var(--ink)}
+  .post-view .c-verify .c-lbl span{font-weight:400;color:var(--muted)}
+  .post-view .c-inline{display:flex;gap:8px;align-items:stretch}
+  .post-view .c-inline input{flex:1;min-width:0}
+  .post-view .c-form button.c-btn2{background:transparent;color:var(--rose-deep);border:1px solid var(--rose);padding:10px 18px;white-space:nowrap}
+  .post-view .c-form button.c-btn2:hover{background:var(--rose-soft)}
+  .post-view .c-form button.c-link{background:none;border:0;padding:0 4px;color:var(--muted);font-weight:500;font-size:13px;text-decoration:underline;text-underline-offset:2px}
+  .post-view .c-form button.c-link:hover{background:none;color:var(--rose-deep)}
+  .post-view .c-code{letter-spacing:.3em;font-variant-numeric:tabular-nums}
+  .post-view .c-code::placeholder{letter-spacing:normal}
+  .post-view .c-form label.c-lbl{display:block}
+  .post-view .c-vmsg{font-size:13px;color:var(--muted)}
+  .post-view .c-vmsg.err{color:var(--rose-deep)}
+  .post-view .c-vmsg.ok{color:#2f7a4b}
+  .post-view .c-verified{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:14px;color:#2f7a4b;background:#eef7f0;border:1px solid #cfe6d6;border-radius:12px;padding:10px 14px}
+  .post-view .c-verified b{color:var(--ink);font-weight:600;overflow-wrap:anywhere}
+  .post-view .c-verified[hidden],.post-view .c-verify[hidden],.post-view .c-inline[hidden]{display:none}
+  @media(max-width:480px){.post-view .c-inline{flex-wrap:wrap}.post-view .c-form button.c-btn2{flex:1}}
 </style>
 </head>
 <body>
@@ -1849,6 +1869,42 @@
   (function(){
     const MAX=1000;
     const OWNER_KEY='km-comment-owner';
+
+    // ---- Email verification -------------------------------------------------
+    // A 6-digit code is emailed to the reader; only after they type it back
+    // can they post. Codes are sent with EmailJS (free: https://www.emailjs.com).
+    // Fill in the three values below. While they are empty the form runs in
+    // DEMO mode: the code is shown on screen instead of emailed (testing only).
+    const EMAIL_CONFIG={
+      serviceId:'',   // e.g. 'service_abc123'
+      templateId:'',  // e.g. 'template_xyz789'  (template uses {{to_email}}, {{passcode}}, {{to_name}})
+      publicKey:''    // Account → General → Public Key
+    };
+    const DEMO=!(EMAIL_CONFIG.serviceId&&EMAIL_CONFIG.templateId&&EMAIL_CONFIG.publicKey);
+    const CODE_TTL=10*60*1000, MAX_TRIES=5, RESEND_WAIT=30;
+    const VERIFIED_KEY='km-verified-email';
+    const EMAIL_RE=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    let verifiedEmail='';
+    try{verifiedEmail=localStorage.getItem(VERIFIED_KEY)||''}catch(e){}
+    const verifyListeners=[];
+    function setVerified(email){
+      verifiedEmail=email;
+      try{email?localStorage.setItem(VERIFIED_KEY,email):localStorage.removeItem(VERIFIED_KEY)}catch(e){}
+      verifyListeners.forEach(fn=>fn());
+    }
+    function makeCode(){
+      const a=new Uint32Array(1);(window.crypto||window.msCrypto).getRandomValues(a);
+      return String(100000+(a[0]%900000));
+    }
+    async function deliverCode(email,code,name){
+      if(DEMO)return;
+      const r=await fetch('https://api.emailjs.com/api/v1.0/email/send',{
+        method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({service_id:EMAIL_CONFIG.serviceId,template_id:EMAIL_CONFIG.templateId,user_id:EMAIL_CONFIG.publicKey,
+          template_params:{to_email:email,passcode:code,to_name:name||'there',site_name:'Kalyan Musings'}})
+      });
+      if(!r.ok)throw new Error(await r.text());
+    }
     const commentStore={
       key:h=>'km-comments:'+h,
       load(h){try{return JSON.parse(localStorage.getItem(this.key(h))||'[]')}catch(e){return []}},
@@ -1880,6 +1936,19 @@
         <p class="c-intro">Share your thoughts, your own story or a question for Team Kalyan.</p>
         <form class="c-form" novalidate>
           <label>Your name<input type="text" name="name" maxlength="60" autocomplete="name" required></label>
+          <div class="c-verify">
+            <label class="c-lbl" for="${uid}-c-email">Your email <span>(verified once, never shown publicly)</span></label>
+            <div class="c-inline">
+              <input id="${uid}-c-email" type="email" name="email" maxlength="120" autocomplete="email" inputmode="email" required>
+              <button type="button" class="c-btn2 c-send">Send code</button>
+            </div>
+            <div class="c-inline c-coderow" hidden>
+              <input class="c-code" type="text" name="code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="6-digit code" aria-label="Verification code">
+              <button type="button" class="c-btn2 c-check">Verify</button>
+            </div>
+            <div class="c-vmsg" role="status" aria-live="polite"></div>
+          </div>
+          <div class="c-verified" hidden>✓ Verified as <b></b><button type="button" class="c-link c-change">Change</button></div>
           <label>Your comment<textarea name="text" maxlength="${MAX}" required></textarea></label>
           <div class="c-row">
             <span class="c-left">${MAX} characters left</span>
@@ -1892,9 +1961,67 @@
       article.after(sec);
 
       const form=sec.querySelector('form'), nameIn=form.name, textIn=form.text;
-      const btn=form.querySelector('button'), left=form.querySelector('.c-left'), msg=form.querySelector('.c-msg');
+      const btn=form.querySelector('button[type=submit]'), left=form.querySelector('.c-left'), msg=form.querySelector('.c-msg');
       const list=sec.querySelector('.c-list'), empty=sec.querySelector('.c-empty'), count=sec.querySelector('.count');
       try{nameIn.value=localStorage.getItem('km-comment-name')||''}catch(e){}
+      const emailIn=form.email, codeIn=form.code, vBox=form.querySelector('.c-verify'), vDone=form.querySelector('.c-verified');
+      const sendBtn=form.querySelector('.c-send'), checkBtn=form.querySelector('.c-check'), codeRow=form.querySelector('.c-coderow');
+      const vmsg=form.querySelector('.c-vmsg');
+      let pending=null, cooldown=0, timer=null;
+      if(verifiedEmail)emailIn.value=verifiedEmail;
+
+      function say(t,cls){vmsg.textContent=t;vmsg.className='c-vmsg'+(cls?' '+cls:'')}
+      function showState(){
+        const ok=!!verifiedEmail;
+        vBox.hidden=ok;vDone.hidden=!ok;
+        if(ok)vDone.querySelector('b').textContent=verifiedEmail;
+        validate();
+      }
+      verifyListeners.push(showState);
+      function tick(){
+        if(cooldown>0){sendBtn.disabled=true;sendBtn.textContent='Resend in '+cooldown+'s';cooldown--;timer=setTimeout(tick,1000)}
+        else{sendBtn.disabled=false;sendBtn.textContent=pending?'Resend code':'Send code'}
+      }
+      sendBtn.addEventListener('click',async()=>{
+        const email=emailIn.value.trim().toLowerCase();
+        if(!EMAIL_RE.test(email)){say('Please enter a valid email address.','err');emailIn.focus();return}
+        const code=makeCode();
+        sendBtn.disabled=true;sendBtn.textContent='Sending…';say('');
+        try{
+          await deliverCode(email,code,nameIn.value.trim());
+          pending={email,code,exp:Date.now()+CODE_TTL,tries:0};
+          codeRow.hidden=false;codeIn.value='';codeIn.focus();
+          say(DEMO?'Demo mode (email service not set up yet) — your code is '+code:'We sent a 6-digit code to '+email+'. Check your inbox (and spam folder).',DEMO?'':'ok');
+          cooldown=RESEND_WAIT;clearTimeout(timer);tick();
+        }catch(err){
+          console.error('Email send failed:',err);
+          say('Sorry, we could not send the code right now. Please try again in a moment.','err');
+          sendBtn.disabled=false;sendBtn.textContent='Send code';
+        }
+      });
+      emailIn.addEventListener('input',()=>{
+        if(pending&&emailIn.value.trim().toLowerCase()!==pending.email){pending=null;codeRow.hidden=true;say('')}
+      });
+      emailIn.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();sendBtn.click()}});
+      codeIn.addEventListener('input',()=>{codeIn.value=codeIn.value.replace(/\D/g,'').slice(0,6)});
+      codeIn.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();checkBtn.click()}});
+      checkBtn.addEventListener('click',()=>{
+        if(!pending){say('Please request a code first.','err');return}
+        if(Date.now()>pending.exp){pending=null;codeRow.hidden=true;say('That code has expired. Please request a new one.','err');return}
+        if(codeIn.value.trim()===pending.code){
+          const email=pending.email;pending=null;codeRow.hidden=true;say('');
+          setVerified(email);
+          msg.textContent='Email verified — you can post your comment now.';setTimeout(()=>{msg.textContent=''},3500);
+          textIn.focus();
+        }else if(++pending.tries>=MAX_TRIES){
+          pending=null;codeRow.hidden=true;say('Too many wrong attempts. Please request a new code.','err');
+        }else{
+          say('That code is not correct. '+(MAX_TRIES-pending.tries)+' attempt(s) left.','err');codeIn.select();
+        }
+      });
+      vDone.querySelector('.c-change').addEventListener('click',()=>{
+        setVerified('');emailIn.value='';say('');emailIn.focus();
+      });
 
       function render(newId){
         const items=commentStore.load(hash).sort((x,y)=>y.ts-x.ts);
@@ -1914,7 +2041,8 @@
         const n=textIn.value.length;
         left.textContent=(MAX-n)+' characters left';
         left.classList.toggle('warn',MAX-n<50);
-        btn.disabled=!(nameIn.value.trim()&&textIn.value.trim());
+        btn.disabled=!(nameIn.value.trim()&&textIn.value.trim()&&verifiedEmail);
+        btn.title=verifiedEmail?'':'Verify your email to post';
       }
       nameIn.addEventListener('input',validate);
       textIn.addEventListener('input',validate);
@@ -1923,7 +2051,8 @@
         e.preventDefault();
         const name=nameIn.value.trim().slice(0,60), text=textIn.value.trim().slice(0,MAX);
         if(!name||!text)return;
-        const c={id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),name,text,ts:Date.now(),owner};
+        if(!verifiedEmail){say('Please verify your email before posting.','err');emailIn.focus();return}
+        const c={id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),name,email:verifiedEmail,text,ts:Date.now(),owner};
         const items=commentStore.load(hash);items.push(c);
         if(!commentStore.save(hash,items)){msg.textContent='Sorry, your comment could not be saved in this browser.';return}
         try{localStorage.setItem('km-comment-name',name)}catch(e){}
@@ -1941,7 +2070,7 @@
         render();
       });
 
-      validate();render();
+      showState();render();
     });
   })();
 </script>
