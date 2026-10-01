@@ -30,12 +30,14 @@
   /* header */
   header.site{position:sticky;top:0;z-index:60;background:rgba(252,235,210,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
   .head-inner{display:flex;align-items:center;justify-content:space-between;height:80px;gap:20px}
-  .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
-  .logo .mark{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--rose),var(--rose-deep));color:#fff;display:grid;place-items:center;font-family:var(--serif);font-size:26px;font-weight:600;box-shadow:0 10px 22px -10px rgba(156,42,30,.7)}
+  .logo{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;min-width:0}
+  .logo .mark{flex:0 0 46px;width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--rose),var(--rose-deep));color:#fff;display:grid;place-items:center;font-family:var(--serif);font-size:26px;font-weight:600;box-shadow:0 10px 22px -10px rgba(156,42,30,.7)}
+  .logo .txt{display:flex;flex-direction:column;justify-content:center;gap:5px;white-space:nowrap}
   .logo .txt b{font-family:var(--serif);font-size:23px;font-weight:600;display:block;line-height:1}
-  .logo .txt span{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--rose)}
-  .main-nav{display:flex;gap:30px}
-  .main-nav a{text-decoration:none;font-size:14.5px;font-weight:500;position:relative;padding:6px 0}
+  .logo .txt span{display:block;font-size:10px;line-height:1;letter-spacing:2.6px;text-transform:uppercase;color:var(--rose)}
+  .main-nav{display:flex;align-items:center;gap:24px;flex:0 1 auto;min-width:0}
+  .main-nav a{text-decoration:none;font-size:14px;font-weight:500;position:relative;padding:6px 0;white-space:nowrap}
+  .head-right{flex-shrink:0}
   .main-nav a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--rose);transition:width .3s}
   .main-nav a:hover::after,.main-nav a.active::after{width:100%}
   .head-right{display:flex;align-items:center;gap:14px}
@@ -149,9 +151,35 @@
     .f-grid{grid-template-columns:1fr 1fr;gap:30px}
     .ig-grid{grid-template-columns:repeat(3,1fr)}
   }
-  @media(max-width:760px){
-    .main-nav,.search{display:none}
-    .menu-btn{display:block}
+  /* Header: drop the search first, then fold the nav into the ☰ menu,
+     so the logo never gets squeezed */
+  @media(max-width:1400px){ .head-right .search{display:none} }
+  @media(max-width:1180px){
+    .head-inner{position:relative}
+    .main-nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--paper);border:1px solid var(--line);border-top:0;border-radius:0 0 18px 18px;box-shadow:0 18px 30px -18px rgba(60,30,20,.35);padding:6px 26px 14px}
+    header.site.nav-open .main-nav{display:flex}
+    .main-nav a{padding:13px 0;border-bottom:1px solid var(--line);font-size:15px}
+    .main-nav a:last-child{border-bottom:0}
+    .main-nav a::after{display:none}
+    .main-nav a.active{color:var(--rose)}
+    .menu-btn{display:block;line-height:1;padding:4px 2px}
+  }
+  @media(max-width:560px){
+    .head-inner{height:68px;gap:12px}
+    .wrap.head-inner{padding:0 16px}
+    .logo{gap:10px}
+    .logo .mark{flex-basis:40px;width:40px;height:40px;border-radius:12px;font-size:22px}
+    .logo .txt b{font-size:19px}
+    .logo .txt span{font-size:8.5px;letter-spacing:1.8px}
+    .btn-match{padding:9px 13px;font-size:12.5px}
+    .head-right{gap:10px}
+    .menu-btn{font-size:23px}
+    .sec-head{flex-wrap:wrap;row-gap:6px}
+    .sec-head .rule{min-width:24px}
+    .main-nav{padding:4px 16px 12px}
+  }
+  @media(max-width:380px){
+    .btn-match{display:none}
   }
   @media(max-width:560px){
     .card{width:280px}
@@ -2073,6 +2101,14 @@
       showState();render();
     });
   })();
+</script>
+<script>
+(function(){var h=document.querySelector('header.site'),b=h&&h.querySelector('.menu-btn');if(!b)return;
+b.setAttribute('aria-label','Menu');b.setAttribute('aria-expanded','false');
+b.addEventListener('click',function(e){e.stopPropagation();var o=h.classList.toggle('nav-open');b.setAttribute('aria-expanded',o);b.textContent=o?'\u2715':'\u2630';});
+h.querySelectorAll('.main-nav a').forEach(function(a){a.addEventListener('click',function(){h.classList.remove('nav-open');b.setAttribute('aria-expanded','false');b.textContent='\u2630';});});
+document.addEventListener('click',function(e){if(!h.contains(e.target)&&h.classList.contains('nav-open')){h.classList.remove('nav-open');b.textContent='\u2630';}});
+})();
 </script>
 </body>
 </html>
